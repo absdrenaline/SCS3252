@@ -5,7 +5,7 @@ set "defaultMongoDir=C:\Program Files\MongoDB\Server\3.4\bin\"
 echo *** Welcome to the mongo Shell launcher creation script v1.0 ***
 
 for /L %%n in (1,1,3) do (
-  set /p mongoDir="Where is Mongo located on your machine? Press Enter for Default (%defaultMongoDir%): "
+  set /p mongoDir="Where is Mongo located on your machine? (E.g: %defaultMongoDir% or Press Enter for Default): "
   IF "!mongoDir!" == "" (
 	set "mongoDir=!defaultMongoDir!"
 	echo Using mongo directory !mongoDir!
@@ -13,7 +13,8 @@ for /L %%n in (1,1,3) do (
   IF EXIST "!mongoDir!\\mongo.exe" (
 	call :nextstep
   ) ELSE (
-	echo I did not find the Mongo Client on the path %mongoDir%.\nCheck if Mongo.exe is located inside that folder and try again!
+	echo I did not find the Mongo Client on the path %mongoDir%.
+	echo Check if Mongo.exe is located inside that folder and try again!
   )
 )
 :failed
